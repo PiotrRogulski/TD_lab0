@@ -3,3 +3,5 @@
 *.gz
 .vscode
 .vscode/*
+*.synctex(busy)
+*synctex.gz

@@ -22,9 +22,27 @@
 \section{Konfiguracja ipv4}
 \subsection{Konfiguracja routera R1}
 \subsection{Konfiguracja routera R2}
+Po połączeniu z routerem R2, ipv4 address routera nie jest ustawiony.
+\\ Obrazek z logów \\
+By ustawić ipv4 wchodzimy w tryb konfiguracji i ustawiamy ipv4 adres.
+\\Obrazek logów \\
+Adres ipv4 routera R2 zostaje ustawiony na 192.168.0.2 z maską 255.255.255.0.
+\\Obrazek logów\\
+Pozostaje nam jeszcze ustawić \textit{line protocol} na \textit{up} przy pomocy \textit{no shutdown}. W tym celu ponownie otwieramy tryb konfiguracji.
+\\Obrazek logów\\
+R2 jest gotowy do łączenia z innymi routerami.
+\\Obrazek logów\\
 \subsection{Połączenie między routerami}
 \section{Konfiguracja ipv6}
 \subsection{Konfiguracja routera R1}
 \subsection{Konfiguracja routera R2}
+By skonfigurować R2 pod użycie ipv6 wchodzimy w tryb konfiguracji i ustawiamy ipv6 adres.
+\\Obrazek logów \\
+R2 znajduje się pod adresem 2001:DB8:0:1::1.
+\\Obrazek logów\\\
+Usuwamy ustawiony wcześniej ipv4 adres.
+\\Obrazek logów\\
+R2 jest gotowy do łączenia z innymi routerami przez ipv6.
+\\Obrazek logów\\
 \subsection{Połączenie między routerami}
 \end{document}

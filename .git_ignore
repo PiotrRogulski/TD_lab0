@@ -2,4 +2,5 @@
 *.log
 *.gz
 .vscode
-.vscode/*
+.vscode/**
+_minted*/**

@@ -8,6 +8,11 @@
 \usepackage{bookmark}
 \usepackage[margin=1in]{geometry}
 \usepackage[babel=true, tracking=true]{microtype}
+\usepackage[svgnames]{xcolor}
+\usepackage{minted}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setminted{numbers=left, frame=single, bgcolor=bg, breaklines=true}
 
 \linespread{1.3}
 \setlength{\parindent}{0pt}
@@ -19,6 +24,9 @@
 \begin{document}
 
 \maketitle
+
+\inputminted[label=Output, firstline=20]{text}{R1_1_copy.txt}
+
 \section{Konfiguracja ipv4}
 \subsection{Konfiguracja routera R1}
 \subsection{Konfiguracja routera R2}

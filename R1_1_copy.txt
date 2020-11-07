@@ -1,0 +1,43 @@
+R1#show IP int
+R1#show IP interface
+Ethernet0/0 is administratively down, line protocol is down
+  Internet protocol processing disabled
+Ethernet0/1 is administratively down, line protocol is down
+  Internet protocol processing disabled
+Ethernet0/2 is administratively down, line protocol is down
+  Internet protocol processing disabled
+Ethernet0/3 is administratively down, line protocol is down
+  Internet protocol processing disabled
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#in e0/0
+R1(config-if)#ip address 192.168.0.1 255.255.255.0
+R1(config-if)#exit
+R1(config)#^Z
+R1#
+*Mar  1 00:06:39.139: %SYS-5-CONFIG_I: Configured from console by console
+R1#show inter
+R1#show interfaces
+Ethernet0/0 is administratively down, line protocol is down
+  Hardware is AmdP2, address is cc02.1a35.0000 (bia cc02.1a35.0000)
+  Internet address is 192.168.0.1/24
+  MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts, 0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 input packets with dribble condition detected
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred

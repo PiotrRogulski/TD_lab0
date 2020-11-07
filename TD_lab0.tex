@@ -1,13 +1,20 @@
 \documentclass[a4paper,12pt,notitlepage]{article}
 
+\usepackage[svgnames]{xcolor}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{mathtools}
+
 \usepackage[math]{fontspec}
 \usepackage[nosingleletter, lastparline]{impnattypo}
 \usepackage[polish]{babel}
 \usepackage{bookmark}
 \usepackage[margin=1in]{geometry}
 \usepackage[babel=true, tracking=true]{microtype}
+\usepackage{shellesc}
+\usepackage{minted}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setminted{numbers=left, frame=single, bgcolor=bg, breaklines=true}
 
 \linespread{1.3}
 \setlength{\parindent}{0pt}
@@ -19,30 +26,34 @@
 \begin{document}
 
 \maketitle
+
+% \inputminted[label=Output, firstline=20]{text}{R1_1_copy.txt}
+
 \section{Konfiguracja ipv4}
 \subsection{Konfiguracja routera R1}
 \subsection{Konfiguracja routera R2}
 Po połączeniu z routerem R2, ipv4 address routera nie jest ustawiony.
-\\ Obrazek z logów \\
+\inputminted[label=Output, firstline=88, lastline=111]{text}{R2.txt}
 By ustawić ipv4 wchodzimy w tryb konfiguracji i ustawiamy ipv4 adres.
-\\Obrazek logów \\
+\inputminted[label=Output, firstline=113, lastline=120]{text}{R2.txt}
 Adres ipv4 routera R2 zostaje ustawiony na 192.168.0.2 z maską 255.255.255.0.
-\\Obrazek logów\\
+\inputminted[label=Output, firstline=121, lastline=144]{text}{R2.txt}
 Pozostaje nam jeszcze ustawić \textit{line protocol} na \textit{up} przy pomocy \textit{no shutdown}. W tym celu ponownie otwieramy tryb konfiguracji.
-\\Obrazek logów\\
-R2 jest gotowy do łączenia z innymi routerami.
-\\Obrazek logów\\
+\inputminted[label=Output, firstline=147, lastline=157]{text}{R2.txt}
+R2 jest gotowy do łączenia z R1 przez Ethernet 0/0.
+\inputminted[label=Output, firstline=162, lastline=185]{text}{R2.txt}
 \subsection{Połączenie między routerami}
 \section{Konfiguracja ipv6}
 \subsection{Konfiguracja routera R1}
 \subsection{Konfiguracja routera R2}
 By skonfigurować R2 pod użycie ipv6 wchodzimy w tryb konfiguracji i ustawiamy ipv6 adres.
-\\Obrazek logów \\
+\inputminted[label=Output, firstline=272, lastline=283]{text}{R2.txt}
 R2 znajduje się pod adresem 2001:DB8:0:1::1.
-\\Obrazek logów\\\
-Usuwamy ustawiony wcześniej ipv4 adres.
-\\Obrazek logów\\
-R2 jest gotowy do łączenia z innymi routerami przez ipv6.
-\\Obrazek logów\\
+\inputminted[label=Output, firstline=309, lastline=323]{text}{R2.txt}
+Usuwamy ustawiony wcześniej ipv4 adres, dodajemy unicast routing.
+\inputminted[label=Output, firstline=324, lastline=329]{text}{R2.txt}
+\inputminted[label=Output, firstline=376, lastline=382]{text}{R2.txt}
+R2 jest gotowy do łączenia przez Ethernet 0/0 korzystając z ipv6.
+\inputminted[label=Output, firstline=383, lastline=402]{text}{R2.txt}
 \subsection{Połączenie między routerami}
 \end{document}

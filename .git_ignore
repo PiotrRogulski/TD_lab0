@@ -5,3 +5,6 @@
 .vscode/*
 *.synctex(busy)
 *synctex.gz
+.vscode/**
+_minted*/**
+*.pdf

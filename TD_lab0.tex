@@ -14,14 +14,24 @@
 \usepackage{minted}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted{numbers=left, frame=single, bgcolor=bg, breaklines=true}
+\setminted{frame=single, bgcolor=bg, breaklines=true}
+\setmintedinline{bgcolor=white}
 
 \linespread{1.3}
 \setlength{\parindent}{0pt}
 
-\title{\textbf{TD -- laboratoria 0}}
+\title{\textbf{TD -- laboratorium 0}}
 \author{Piotr Rogulski 305867 \\ Szymon Sieradzki 305881}
 \date{\today}
+
+\IfFontExistsTF{JetBrainsMono-Regular}{
+    \setmonofont{JetBrainsMono}[
+        UprightFont = *-Light,
+        BoldFont = *-Regular,
+        ItalicFont = *-Light-Italic,
+        Scale = MatchLowercase
+    ]
+}{}
 
 \begin{document}
 
@@ -29,9 +39,46 @@
 
 % \inputminted[label=Output, firstline=20]{text}{R1_1_copy.txt}
 
+\section{Schemat adresacji}
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+        \caption{Adresacja ipv4}
+        \centering
+        \begin{tabular}{c|c}
+            \hline\hline
+            R1 & \mintinline{text}{192.168.0.1/24} \\
+            R2 & \mintinline{text}{192.168.0.2/24} \\
+            \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+        \caption{Adresacja ipv6}
+        \centering
+        \begin{tabular}{c|c}
+            \hline\hline
+            R1 & \mintinline{text}{2001:DB8:0:1::2/64} \\
+            R2 & \mintinline{text}{2001:DB8:0:1::1/64} \\
+            \hline
+        \end{tabular}
+    \end{minipage}
+\end{table}
+
 \section{Konfiguracja ipv4}
+
 \subsection{Konfiguracja routera R1}
+
+W celu konfiguracji routera R1, na początek należy nadać mu adres ipv4 \mintinline{text}{192.168.0.1/24}.%
+\inputminted[label=Ustawianie adresu ipv4 dla R1, firstline=89, lastline=92]{text}{R1.txt}
+
+Po ustawieniu adresu nie ma jeszcze komunikacji między urządzeniami w sieci, ponieważ protokół linii \mintinline{text}{Ethernet0/0} jest wyłączony.%
+\inputminted[label=Włączanie protokołu linii, firstline=122, lastline=123]{text}{R1.txt}
+
+Router R1 został pomyślnie skonfigurowany i może komunikować się z innymi urządzeniami w sieci poprzez protokół ipv4.%
+\inputminted[label=Końcowa konfiguracja routera R1, firstline=129, lastline=154]{text}{R1.txt}
+
 \subsection{Konfiguracja routera R2}
+
 Po połączeniu z routerem R2, ipv4 address routera nie jest ustawiony.
 \inputminted[label=Output, firstline=88, lastline=111]{text}{R2.txt}
 By ustawić ipv4 wchodzimy w tryb konfiguracji i ustawiamy ipv4 adres.
@@ -42,12 +89,27 @@ Pozostaje nam jeszcze ustawić \textit{line protocol} na \textit{up} przy pomocy
 \inputminted[label=Output, firstline=147, lastline=157]{text}{R2.txt}
 R2 jest gotowy do łączenia z R1 przez Ethernet 0/0.
 \inputminted[label=Output, firstline=162, lastline=185]{text}{R2.txt}
+
 \subsection{Połączenie między routerami}
-Powyższa konfiguracja pozwala nam z powodzeniem kontakować się między R1 i R2.
-\inputminted[label=Output, firstline=193, lastline=216]{text}{R2.txt}
+
+Powyższa konfiguracja pozwala na komunikację między routerami R1 i R2.%
+\inputminted[label=Próba komunikacji R2 z R1, firstline=211, lastline=216]{text}{R2.txt}%
+\inputminted[label=Próba komunikacji R1 z R2, firstline=155, lastline=160]{text}{R1.txt}
+
 \section{Konfiguracja ipv6}
+
 \subsection{Konfiguracja routera R1}
+
+W celu skonfigurowania komunikacji przez protokół ipv6 należy wyłączyć protokół ipv4 oraz włączyć ipv6.%
+\inputminted[label=Przełączanie na ipv6, firstline=171, lastline=177]{text}{R1.txt}
+
+Należy także ustawić odpowiedni adres ipv6 dla routera R1.%
+\inputminted[label=Ustawianie adresu ipv6 dla R1, firstline=237, lastline=238]{text}{R1.txt}
+
+Router R1 został pomyślnie skonfigurowany i może komunikować się z innymi urządzeniami w sieci poprzez protokół ipv6.
+
 \subsection{Konfiguracja routera R2}
+
 By skonfigurować R2 pod użycie ipv6 wchodzimy w tryb konfiguracji i ustawiamy ipv6 adres.
 \inputminted[label=Output, firstline=272, lastline=283]{text}{R2.txt}
 R2 znajduje się pod adresem 2001:DB8:0:1::1.
@@ -57,7 +119,11 @@ Usuwamy ustawiony wcześniej ipv4 adres, dodajemy unicast routing.
 \inputminted[label=Output, firstline=376, lastline=382]{text}{R2.txt}
 R2 jest gotowy do łączenia przez Ethernet 0/0 korzystając z ipv6.
 \inputminted[label=Output, firstline=383, lastline=402]{text}{R2.txt}
+
 \subsection{Połączenie między routerami}
-Powyższa konfiguracja pozwala nam z powodzeniem kontakować się między R1 i R2.
-\inputminted[label=Output, firstline=416, lastline=427]{text}{R2.txt}
+
+Powyższa konfiguracja pozwala na komunikację między routerami R1 i R2.%
+\inputminted[label=Próba komunikacji R2 z R1, firstline=416, lastline=421]{text}{R2.txt}%
+\inputminted[label=Próba komunikacji R1 z R2, firstline=248, lastline=253]{text}{R1.txt}
+
 \end{document}

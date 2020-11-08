@@ -7,31 +7,6 @@
      ¦ ? For more info, ctrl+click on help or visit our website           ¦
      +--------------------------------------------------------------------+
 
-
-Network error: Connection timed out
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Session stopped
-    - Press <return> to exit tab
-    - Press R to restart session
-    - Press S to save terminal output to file
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Session stopped
-    - Press <return> to exit tab
-    - Press R to restart session
-    - Press S to save terminal output to file
-     +--------------------------------------------------------------------+
-     ¦                        • MobaXterm 20.4 •                          ¦
-     ¦            (SSH client, X-server and networking tools)             ¦
-     ¦                                                                    ¦
-     ¦ ? Telnet session to 10.14.0.221                                    ¦
-     ¦ ? Your DISPLAY is set to 192.168.1.88:0.0                          ¦
-     ¦ ? For more info, ctrl+click on help or visit our website           ¦
-     +--------------------------------------------------------------------+
-
 Connected to Dynamips VM "R1" (ID 2, type c3600) - Console port
 Press ENTER to get the prompt.
 ROMMON emulation microcode.
@@ -102,7 +77,6 @@ Compiled Wed 18-Aug-10 06:58 by prod_rel_team
 *Mar  1 00:00:14.211: %LINK-5-CHANGED: Interface Ethernet0/1, changed state to administratively down
 *Mar  1 00:00:14.219: %LINK-5-CHANGED: Interface Ethernet0/2, changed state to administratively down
 *Mar  1 00:00:14.227: %LINK-5-CHANGED: Interface Ethernet0/3, changed state to administratively down 2020-11-07 12:00:14 FmXuPYKbAldOIqJ4
-R1#show IP int
 R1#show IP interface
 Ethernet0/0 is administratively down, line protocol is down
   Internet protocol processing disabled
@@ -120,7 +94,6 @@ R1(config-if)#exit
 R1(config)#^Z
 R1#
 *Mar  1 00:06:39.139: %SYS-5-CONFIG_I: Configured from console by console
-R1#show inter
 R1#show interfaces
 Ethernet0/0 is administratively down, line protocol is down
   Hardware is AmdP2, address is cc02.1a35.0000 (bia cc02.1a35.0000)
@@ -146,24 +119,13 @@ Ethernet0/0 is administratively down, line protocol is down
      0 unknown protocol drops
      0 babbles, 0 late collision, 0 deferred
 
-R1#no shutdown
-      ^
-% Invalid input detected at '^' marker.
-
-R1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#no shutdown
-% Incomplete command.
-
 R1(config)#in e0/0
 R1(config-if)#no shutdown
 R1(config-if)#
 *Mar  1 00:07:27.467: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
 *Mar  1 00:07:28.467: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
 R1(config-if)#^Z
-R1#show
 *Mar  1 00:07:33.199: %SYS-5-CONFIG_I: Configured from console by console
-R1#show int
 R1#show interface e0/0
 Ethernet0/0 is up, line protocol is up
   Hardware is AmdP2, address is cc02.1a35.0000 (bia cc02.1a35.0000)
@@ -202,44 +164,20 @@ Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 192.168.0.5, timeout is 2 seconds:
 .....
 Success rate is 0 percent (0/5)
-R1#no ip address
-      ^
-% Invalid input detected at '^' marker.
 
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#no ip address
-% Incomplete command.
 
 R1(config)#in e0/0
 R1(config-if)#no ip address
-R1(config-if)#ipv6 address 2001:DB8:0:1::2
-% Incomplete command.
 
-R1(config-if)#ipv6 unic
-R1(config-if)#ipv6 unicast-rou
 R1(config-if)#ipv6 unicast-routing
-R1(config)#ipv6 enable
-                ^
-% Invalid input detected at '^' marker.
 
 R1(config)#in e0/0
 R1(config-if)#ipv6 enable
-R1(config-if)#ipv6 address 2001:DB8:0:1::2
-% Incomplete command.
-
-R1(config-if)#show ipv6 interface
-                ^
-% Invalid input detected at '^' marker.
 
 R1(config-if)#^Z
-R1#no ip address
-*Mar  1 00:14:18.751: %SYS-5-CONFIG_I: Configured from console by console
-R1#no ip address
-      ^
-% Invalid input detected at '^' marker.
 
-R1#show ipv6 int
 R1#show ipv6 interface
 Ethernet0/0 is up, line protocol is up
   IPv6 is enabled, link-local address is FE80::CE02:1AFF:FE35:0
@@ -261,19 +199,10 @@ Ethernet0/0 is up, line protocol is up
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
 R1(config)#in e0/0
-R1(config-if)#ipv6 address 2001:DB8:0:1::2
-% Incomplete command.
-
-R1(config-if)#ipv6 address
-% Incomplete command.
 
 R1(config-if)#ipv6 unicast-routing
 R1(config)#in e0/0
 R1(config-if)#no ip address
-R1(config-if)#show int
-R1(config-if)#show interface
-                ^
-% Invalid input detected at '^' marker.
 
 R1(config-if)#^Z
 R1#
@@ -315,7 +244,6 @@ Enter configuration commands, one per line.  End with CNTL/Z.
 R1(config)#in e0/0
 R1(config-if)#ipv6 enable
 R1(config-if)#^Z
-R1#ping 2
 *Mar  1 00:18:55.623: %SYS-5-CONFIG_I: Configured from console by console
 R1#ping 2001:DB8:0:1::1
 
